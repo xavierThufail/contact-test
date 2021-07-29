@@ -1,51 +1,47 @@
-import axios from "axios";
+import axios from 'axios';
 
-const url = "https://simple-contact-crud.herokuapp.com/contact";
+const url = 'https://simple-contact-crud.herokuapp.com/contact';
 
 const setContacts = (contacts) => {
   return {
-    type: "SET_CONTACTS",
+    type: 'SET_CONTACTS',
     payload: contacts
   };
 };
 
-const setStatus = (type, payload) => {
-  switch(type) {
-    case "del":
-      return {type: "SET_STATUS_DELETE", payload};
-    case "edit":
-      return {type: "SET_STATUS_EDIT", payload};
-    default:
-      return {type: "SET_STATUS_POST", payload}
+const setStatus = (payload) => {
+  return {
+    type: 'SET_STATUS',
+    payload
   }
 }
 
 const setIdCard = (id) => {
   return {
-    type: "SET_ID_CARD",
+    type: 'SET_ID_CARD',
     payload: id
   }
 }
 
 const setLoading = (loading) => {
   return {
-    type: "SET_LOADING",
+    type: 'SET_LOADING',
     payload: loading
   };
 };
 
 const setError = (err) => {
   return {
-    type: "SET_ERROR",
+    type: 'SET_ERROR',
     payload: err
   };
 };
 
-const get = () => {
+const getContact = () => {
   return (dispatch) => {
     dispatch(setLoading(true));
     axios({
-      method: "GET",
+      method: 'GET',
       url
     })
       .then(({ data }) => {
@@ -60,23 +56,20 @@ const get = () => {
   };
 };
 
-const post = (data) => {
-  console.log(data);
+const postContact = (data) => {
   return (dispatch) => {
     dispatch(setLoading(true));
     axios({
-      method: "POST",
+      method: 'POST',
       url,
       data
     })
       .then(({data}) => {
-        console.log('success')
-        dispatch(setStatus('post', data.message))
-        dispatch(get());
+        dispatch(setStatus(data.message))
+        dispatch(getContact());
       })
       .catch(err => {
-        console.log('error')
-        dispatch(setStatus('post', err.response.data.message))
+        dispatch(setStatus(err.response.data.message))
         dispatch(setError(err.response.data.message));
       })
       .finally(_ => {
@@ -85,20 +78,20 @@ const post = (data) => {
   };
 };
 
-const put = (id, data) => {
+const editContact = (id, data) => {
   return (dispatch) => {
     dispatch(setLoading(true));
     axios({
-      method: "PUT",
+      method: 'PUT',
       url: `${url}/${id}`,
       data
     })
       .then(({data}) => {
-        dispatch(setStatus("edit", data.message))
-        dispatch(get());
+        dispatch(setStatus(data.message))
+        dispatch(getContact());
       })
       .catch(err => {
-        dispatch(setStatus("edit", err.response.data.message))
+        dispatch(setStatus(err.response.data.message))
         dispatch(setError(err.response.data.message));
       })
       .finally(_ => {
@@ -107,22 +100,20 @@ const put = (id, data) => {
   };
 };
 
-const del = (id) => {
-  console.log(id)
+const deleteContact = (id) => {
   return (dispatch) => {
     dispatch(setLoading(true));
     axios({
-      method: "DELETE",
+      method: 'DELETE',
       url: `${url}/${id}`
     })
       .then(({ data }) => {
-        console.log("success")
-        dispatch(get());
-        dispatch(setStatus("del", data.message))
+        dispatch(getContact());
+        dispatch(setStatus(data.message))
       })
       .catch(err => {
-        console.log("del", err.response.data.message)
-        dispatch(setStatus("del", err.response.data.message))
+        console.log({ err })
+        dispatch(setStatus(err.response.data.message))
         dispatch(setError(err.response.data.message));
       })
       .finally(_ => {
@@ -133,10 +124,10 @@ const del = (id) => {
 
 
 export default {
-  get,
-  post,
-  put,
-  del,
+  getContact,
+  postContact,
+  editContact,
+  deleteContact,
   setStatus,
   setIdCard
 }

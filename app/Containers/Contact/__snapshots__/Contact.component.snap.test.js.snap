@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Component snapshot test Should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginTop": 10,
+          "paddingHorizontal": 10,
+          "zIndex": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#747474",
+            "fontFamily": "source-sans",
+            "fontSize": 22,
+          }
+        }
+      >
+        Contact
+      </Text>
+      <View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#1b83e3",
+              "borderRadius": 10,
+              "justifyContent": "center",
+              "minHeight": 30,
+              "minWidth": 50,
+              "opacity": 1,
+              "padding": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#f0f0f0",
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            Add Contact
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingHorizontal": 10,
+        "paddingTop": 0,
+        "zIndex": 1,
+      }
+    }
+    refreshControl={<RefreshControlMock />}
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+      }
+    }
+  >
+    <RCTRefreshControl />
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "transparent",
+            "marginVertical": 5,
+          }
+        }
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;

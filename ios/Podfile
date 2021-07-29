@@ -12,6 +12,10 @@ target 'ContactJenius' do
     :hermes_enabled => false
   )
 
+  pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'ContactJeniusTests' do
     inherit! :complete
     # Pods for testing
