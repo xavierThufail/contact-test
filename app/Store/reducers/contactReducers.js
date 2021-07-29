@@ -2,9 +2,7 @@ const initialReducers = {
   contacts: [],
   loading: false,
   error: null,
-  statusEdit: '',
-  statusDelete: '',
-  statusPost: '',
+  status: '',
   idCard: ''
 };
 
@@ -25,12 +23,8 @@ export default function contactReducers (state = initialReducers, action) {
       return {...state, loading: action.payload};
     case "SET_ERROR":
       return {...state, error: action.payload};
-    case "SET_STATUS_EDIT":
-      return {...state, statusEdit: action.payload};
-    case "SET_STATUS_DELETE":
-      return {...state, statusDelete: action.payload};
-    case "SET_STATUS_POST":
-      return {...state, statusPost: action.payload};
+    case "SET_STATUS":
+      return {...state, status: action.payload};
     case "SET_ID_CARD":
       return {...state, idCard: action.payload};
     default:
